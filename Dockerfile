@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . .
 
 # Install dependencies using Maven
-RUN mvn clean install
+RUN ./mvnw clean install
 
 # Copy the JAR file to a designated location (optional, but avoids building on every start)
 COPY target/*.jar app.jar
