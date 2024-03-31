@@ -7,6 +7,8 @@ WORKDIR /app
 # Copy application code
 COPY . .
 
+RUN apt-get update && apt-get install -y openjdk-17-jdk maven
+
 # Install dependencies using Maven
 RUN ./mvnw clean install
 
