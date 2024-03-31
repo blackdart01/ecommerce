@@ -1,21 +1,8 @@
-# Base image with OpenJDK
-FROM openjdk:17-jdk
-
-# Set working directory (optional, but improves clarity)
-WORKDIR /app
-
-# Copy application code
+FROM maven:3.8.5-openjdk-17 AS build
 COPY . .
+RUN mvn clean package -DskipTests
 
-RUN apt-get update && apt-get install -y openjdk-17-jdk maven
-
-# Install dependencies using Maven
-RUN ./mvnw clean install
-
-# Copy the JAR file to a designated location (optional, but avoids building on every start)
-COPY target/*.jar app.jar
-
-# Expose the port your Spring Boot application listens on (typically 8080)
+FROM openjdk:17.0.1-jdk-slim
+COPY --from=build /target/demo-0.0.1-SNAPSHOT.jar demo.jar
 EXPOSE 8080
-# Command to run the application
-CMD ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java","-jar","demo.jar"]
