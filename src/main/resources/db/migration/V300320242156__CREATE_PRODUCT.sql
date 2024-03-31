@@ -52,7 +52,8 @@ begin
 
 	execute 'create table ' ||v_schema_name||'.new_product
 				(
-					product_id				serial not null primary key,
+					id				        serial not null primary key,
+					product_id				not null unique,
 					product_name			varchar(250) not null,
 					product_description		varchar(250) not null,
 					product_type			varchar(250) not null,

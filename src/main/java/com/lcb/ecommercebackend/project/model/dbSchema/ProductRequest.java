@@ -9,10 +9,14 @@ import lombok.Data;
 @Table(name="new_product")
 public class ProductRequest {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @JsonProperty("id")
+    @Column(name = "id")
+    private Long id;
+
     @JsonProperty("productId")
     @Column(name = "productId")
-    private Integer productId;
+    private Long productId;
 
     @JsonProperty("productName")
     @Column(name="productName")

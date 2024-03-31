@@ -7,7 +7,7 @@ import lombok.Data;
 public class ProductResponse {
 
     @JsonProperty("productId")
-    private Integer productId;
+    private Long productId;
     @JsonProperty("productName")
     private String productName;
     @JsonProperty("productDescription")
@@ -18,8 +18,8 @@ public class ProductResponse {
     private String productCost;
     @JsonProperty("category")
     private String category;
-    @JsonProperty("error_msg")
-    private String errorMsg;
-    @JsonProperty("status_code")
-    private Integer statusCode;
+//    @JsonProperty("error_msg")
+//    private String errorMsg;
+//    @JsonProperty("status_code")
+//    private Integer statusCode;
 }
