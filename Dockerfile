@@ -1,6 +1,6 @@
 # Build stage
 #
-FROM maven:3.8.6-jdk-17
+FROM maven:3.6.3-jdk-17
 # Updated to match your Java version
 
 # Adjust the version if needed, but using a base image with Java 17 avoids needing to configure the compiler plugin
