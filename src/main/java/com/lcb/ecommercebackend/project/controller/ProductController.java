@@ -1,17 +1,13 @@
 package com.lcb.ecommercebackend.project.controller;
 
-import com.lcb.ecommercebackend.project.model.dbSchema.ProductRequest;
+import com.lcb.ecommercebackend.project.model.dbSchema.ProductEntity;
 import com.lcb.ecommercebackend.project.model.requests.WrapperRequest;
-import com.lcb.ecommercebackend.project.model.responses.ProductResponse;
 import com.lcb.ecommercebackend.project.services.ProductService;
 import com.lcb.ecommercebackend.project.utils.CommonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/ecom/")
@@ -36,13 +32,13 @@ public class ProductController {
     }
 
     @PostMapping("addProduct")
-    public ResponseEntity<WrapperRequest> addNewProduct(@RequestBody ProductRequest productRequest){
+    public ResponseEntity<WrapperRequest> addNewProduct(@RequestBody ProductEntity productRequest){
         WrapperRequest wrapperRequest = productService.addNewProduct(productRequest);
         return ResponseEntity.status(wrapperRequest.getResult().getStatusCode()).body(wrapperRequest);
     }
 
     @PutMapping("updateProduct")
-    public ResponseEntity<WrapperRequest> updateExistingProduct(@RequestBody ProductRequest productRequest){
+    public ResponseEntity<WrapperRequest> updateExistingProduct(@RequestBody ProductEntity productRequest){
         WrapperRequest wrapperRequest = productService.updateExistingProduct(productRequest);
         return ResponseEntity.status(wrapperRequest.getResult().getStatusCode()).body(wrapperRequest);
     }

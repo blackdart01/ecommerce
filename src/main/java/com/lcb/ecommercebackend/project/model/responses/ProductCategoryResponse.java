@@ -6,20 +6,14 @@ import lombok.Data;
 import java.time.ZonedDateTime;
 
 @Data
-public class ProductResponse {
+public class ProductCategoryResponse {
 
-    @JsonProperty("productId")
-    private Long productId;
-    @JsonProperty("productName")
-    private String productName;
-    @JsonProperty("productDescription")
-    private String productDesc;
-    @JsonProperty("price")
-    private String price;
     @JsonProperty("categoryId")
     private Long categoryId;
-    @JsonProperty("sku")
-    private String sku;
+    @JsonProperty("categoryName")
+    private String categoryName;
+    @JsonProperty("categoryDescription")
+    private String categoryDescription;
     @JsonProperty("createdAt")
     private ZonedDateTime createdAt;
     @JsonProperty("modifiedAt")
