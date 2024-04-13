@@ -33,7 +33,7 @@ declare
 	-- do not change the schema name ----
 	v_schema_name varchar(50) 	 := 'public';
 	--- you can changes the file name ----
-	v_filename varchar(100)		 := 'V300320242156__CREATE_PRODUCT.sql';
+	v_filename varchar(100)		 := 'V140420242157__CREATE_PRODUCT_CATEGORY.sql';
 	--- you can changes the file name ----
 	c record;
 
@@ -48,17 +48,14 @@ begin
 
 -- **************************       your sql code starts below this line       **************************
 
-    for c in select 1 where exists (select 1 from pg_tables where schemaname = lower(v_schema_name) and tablename = lower('product')) loop
+    for c in select 1 where exists (select 1 from pg_tables where schemaname = lower(v_schema_name) and tablename = lower('product_category')) loop
 
-	execute 'create table ' ||v_schema_name||'.product
+	execute 'create table ' ||v_schema_name||'.product_category
 				(
 					id				        serial not null primary key,
-					product_id				not null unique,
-					product_name			varchar(250) not null,
-					product_description		varchar(250) not null,
-					price		            varchar(250) not null,
-					category_id		        not null,
-					sku		                varchar(250) not null,
+					category_id				not null unique,
+					category_name			varchar(250) not null,
+					category_desc		varchar(250) not null,
 					created_at		        timestamp with time zone,
 					modified_at			    timestamp with time zone,
 					deleted_at     		    timestamp with time zone,
