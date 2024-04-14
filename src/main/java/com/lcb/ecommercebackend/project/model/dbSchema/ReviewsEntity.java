@@ -21,6 +21,10 @@ public class ReviewsEntity {
     @Column(name = "product_id")
     private Long productId;
 
+    @JsonProperty("review_id")
+    @Column(name = "review_id")
+    private Long reviewId;
+
     @JsonProperty("reviews_name")
     @Column(name="reviews_name")
     private String reviewsName;
