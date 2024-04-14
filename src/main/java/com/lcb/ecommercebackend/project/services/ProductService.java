@@ -40,7 +40,6 @@ public class ProductService {
         else {
             productRequest.setCreatedAt(ObjectUtils.isEmpty(productRequest.getCreatedAt())?commonUtil.getCurrentDate():productRequest.getCreatedAt());
             productRequest.setModifiedAt(ObjectUtils.isEmpty(productRequest.getModifiedAt())?null:productRequest.getModifiedAt());
-            productRequest.setDeletedAt(ObjectUtils.isEmpty(productRequest.getDeletedAt())?null:productRequest.getDeletedAt());
             productRepository.save(productRequest);
             return setProductResponse(productRequest, productRequest.getProductId(), null);
         }
@@ -91,7 +90,6 @@ public class ProductService {
             productResponse.setPrice(productRequest.getPrice());
             productResponse.setCreatedAt(ObjectUtils.isEmpty(productRequest.getCreatedAt())?commonUtil.getCurrentDate():productRequest.getCreatedAt());
             productResponse.setModifiedAt(ObjectUtils.isEmpty(productRequest.getModifiedAt())?null:productRequest.getModifiedAt());
-            productResponse.setDeletedAt(ObjectUtils.isEmpty(productRequest.getDeletedAt())?null:productRequest.getDeletedAt());
         }
         return commonUtil.wrapToWrapperClass(productResponse, resultRequest);
     }

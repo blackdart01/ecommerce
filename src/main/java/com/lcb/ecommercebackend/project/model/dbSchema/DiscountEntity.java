@@ -8,36 +8,35 @@ import java.time.ZonedDateTime;
 
 @Data
 @Entity
-@Table(name="product_category")
-public class ProductCategoryEntity {
-
+@Table(name="discount")
+public class DiscountEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonProperty("id")
     @Column(name = "id")
     private Long id;
 
-    @JsonProperty("category_id")
-    @Column(name="category_id")
-    public String categoryId;
+    @JsonProperty("product_id")
+    @Column(name = "product_id")
+    private Long productId;
 
-    @JsonProperty("category_name")
-    @Column(name="category_name")
-    public String categoryName;
+    @JsonProperty("discounted-price")
+    @Column(name="discounted-price")
+    private String discountedPrice;
 
-    @JsonProperty("category_desc")
-    @Column(name="category_desc")
-    public String categoryDescription;
+    @JsonProperty("discount_id")
+    @Column(name="discount_id")
+    private String discountId;
 
     @JsonProperty("is_active")
     @Column(name="is_active")
     private Boolean isActive;
 
     @JsonProperty("created_at")
-    @Column(name="created_at", columnDefinition = "TIMESTAMP WITH TIME ZONE", nullable = false)
+    @Column(name="created_at", columnDefinition = "TIMESTAMP WITH TIME ZONE")
     private ZonedDateTime createdAt;
 
     @JsonProperty("modified_at")
-    @Column(name="modified_at", columnDefinition = "TIMESTAMP WITH TIME ZONE", nullable = false)
+    @Column(name="modified_at", columnDefinition = "TIMESTAMP WITH TIME ZONE")
     private ZonedDateTime modifiedAt;
 }

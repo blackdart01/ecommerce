@@ -1,6 +1,7 @@
 package com.lcb.ecommercebackend.project.model.dbSchema;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.JsonNode;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -8,8 +9,8 @@ import java.time.ZonedDateTime;
 
 @Data
 @Entity
-@Table(name="product")
-public class ProductEntity {
+@Table(name="reviews")
+public class ReviewsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonProperty("id")
@@ -20,49 +21,29 @@ public class ProductEntity {
     @Column(name = "product_id")
     private Long productId;
 
-    @JsonProperty("product_name")
-    @Column(name="product_name")
-    private String productName;
+    @JsonProperty("reviews_name")
+    @Column(name="reviews_name")
+    private String reviewsName;
 
-    @JsonProperty("product_description")
-    @Column(name="product_description")
-    private String productDesc;
+    @JsonProperty("user_id")
+    @Column(name="user_id")
+    private String userId;
 
-    @JsonProperty("price")
-    @Column(name="price")
-    private String price;
+    @JsonProperty("rating")
+    @Column(name="rating")
+    private String rating;
 
-    @JsonProperty("category_id")
-    @Column(name="category_id")
-    private Long categoryId;
-
-    @JsonProperty("sku")
-    @Column(name="sku")
-    private String sku;
+    @JsonProperty("reviews")
+    @Column(name="reviews")
+    private String reviews; //it would be an array of strings
 
     @JsonProperty("supplier_id")
     @Column(name="supplier_id")
     private String supplierId;
 
-    @JsonProperty("discount_id")
-    @Column(name="discount_id")
-    private String discountId;
-
-    @JsonProperty("units_on_stock")
-    @Column(name="units_on_stock")
-    private String unitsOnStock;
-
-    @JsonProperty("units_on_order")
-    @Column(name="units_on_order")
-    private String unitsOnOrder;
-
     @JsonProperty("is_active")
     @Column(name="is_active")
     private Boolean isActive;
-
-    @JsonProperty("reviews_id")
-    @Column(name="reviews_id")
-    private String reviewsId;
 
     @JsonProperty("created_at")
     @Column(name="created_at", columnDefinition = "TIMESTAMP WITH TIME ZONE")
