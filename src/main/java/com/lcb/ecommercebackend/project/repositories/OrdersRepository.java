@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface OrdersRepository extends JpaRepository<OrdersEntity, Long> {
     public OrdersEntity findByOrderId(Long orderId); // which orderId belong to which order
-    public OrdersEntity findByUserId(Long userId); //which user placed which order
+    public OrdersEntity findByUserId(String userId); //which user placed which order
 }

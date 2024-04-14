@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DiscountRepository extends JpaRepository<DiscountEntity, Long> {
     public DiscountEntity findByProductId(Long productId); //which productId has what what discounts
-    public DiscountEntity findByDiscountId(Long discountId);
+    public DiscountEntity findByDiscountId(String discountId);
 }

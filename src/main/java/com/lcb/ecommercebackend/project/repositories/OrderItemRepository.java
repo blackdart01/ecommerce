@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface OrderItemRepository extends JpaRepository<OrderItemEntity, Long> {
-    public OrderItemEntity findByOrderItemId(Long orderItemId); //which orderItemId belong to which order/item
+    public OrderItemEntity findByOrderItemId(String orderItemId); //which orderItemId belong to which order/item
     public List<OrderItemEntity> findByOrderId(Long orderId); //which orderId belong to what what orders/items
 }
