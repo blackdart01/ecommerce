@@ -15,7 +15,7 @@ public class ProductCategoryEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonProperty("id")
     @Column(name = "id")
-    private Long id;
+    private Integer id;
 
     @JsonProperty("category_id")
     @Column(name="category_id")

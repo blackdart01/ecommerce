@@ -15,15 +15,15 @@ public class ReviewsEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonProperty("id")
     @Column(name = "id")
-    private Long id;
+    private Integer id;
 
     @JsonProperty("product_id")
     @Column(name = "product_id")
-    private Long productId;
+    private Integer productId;
 
     @JsonProperty("review_id")
     @Column(name = "review_id")
-    private Long reviewId;
+    private Integer reviewId;
 
     @JsonProperty("reviews_name")
     @Column(name="reviews_name")

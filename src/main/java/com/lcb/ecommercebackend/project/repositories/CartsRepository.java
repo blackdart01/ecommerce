@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CartsRepository extends JpaRepository<CartsEntity, Long> {
+public interface CartsRepository extends JpaRepository<CartsEntity, Integer> {
     public CartsEntity findByCartId(String cartId); //which cartId has what items in cart
 }

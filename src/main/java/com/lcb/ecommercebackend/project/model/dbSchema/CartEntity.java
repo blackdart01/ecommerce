@@ -8,17 +8,17 @@ import java.time.ZonedDateTime;
 
 @Data
 @Entity
-@Table(name="cart-details")
+@Table(name="cart_details")
 public class CartEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonProperty("id")
     @Column(name = "id")
-    private Long id;
+    private Integer id;
 
     @JsonProperty("user_id")
     @Column(name = "user_id")
-    private Long userId;
+    private Integer userId;
 
     @JsonProperty("cart_id")
     @Column(name="cart_id")

@@ -14,11 +14,11 @@ public class OrdersEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonProperty("id")
     @Column(name = "id")
-    private Long id;
+    private Integer id;
 
     @JsonProperty("order_id")
     @Column(name = "order_id")
-    private Long orderId;
+    private Integer orderId;
 
     @JsonProperty("user_id")
     @Column(name="user_id")

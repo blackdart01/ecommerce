@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface WhishlistRepository extends JpaRepository<WhishlistEntity, Long> {
+public interface WhishlistRepository extends JpaRepository<WhishlistEntity, Integer> {
     public List<WhishlistEntity> findByUserId(String userId);
     public WhishlistEntity findByWhishlistId(String whishlistId);
 }

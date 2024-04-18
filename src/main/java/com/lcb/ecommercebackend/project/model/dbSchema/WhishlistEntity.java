@@ -14,11 +14,11 @@ public class WhishlistEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @JsonProperty("id")
     @Column(name = "id")
-    private Long id;
+    private Integer id;
 
     @JsonProperty("product_id")
     @Column(name = "product_id")
-    private Long productId;
+    private Integer productId;
 
     @JsonProperty("user_id")
     @Column(name="user_id")
