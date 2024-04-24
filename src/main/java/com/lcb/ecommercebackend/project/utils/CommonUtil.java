@@ -7,10 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
 import java.time.ZonedDateTime;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class CommonUtil {
@@ -22,6 +19,13 @@ public class CommonUtil {
         return responseWrapper;
     }
 
+    public <T> ResponseWrapper<T> wrapToWrapperClassForGetAll(List<T> responseClass, ResultResponse resultResponse){
+        ResponseWrapper<T> responseWrapper =  new ResponseWrapper<>();
+        responseWrapper.setResult(resultResponse);
+        responseWrapper.setData(responseClass.get(0));
+        return responseWrapper;
+    }
+
     public ZonedDateTime getCurrentDate(){
         return ZonedDateTime.now();
     }
@@ -30,13 +34,12 @@ public class CommonUtil {
         return "PRD-" + UUID.randomUUID().toString().substring(0, 8);
     }
 
-    public String generateUniqueId() {
-        return "DIS-" + UUID.randomUUID().toString().substring(0, 8);
+    public String generateUniqueId(String entity) {
+        return entity+UUID.randomUUID().toString().substring(0, 7).toUpperCase();
     }
 
     public Integer generateUniqueJrnlId(List<DataCreationIdGenerationEntity> dataCreationIdGenerationEntityList) {
         if (!ObjectUtils.isEmpty(dataCreationIdGenerationEntityList) && !dataCreationIdGenerationEntityList.isEmpty()) {
-//            Math.abs(UUID.randomUUID().getMostSignificantBits())
             Optional<DataCreationIdGenerationEntity> latestEntity = dataCreationIdGenerationEntityList.stream().max(Comparator.comparing(DataCreationIdGenerationEntity::getCreatedAt));
             if (latestEntity.isPresent()) {
                 return Integer.valueOf(latestEntity.get().getJrnlNum()) + 1;
@@ -47,7 +50,5 @@ public class CommonUtil {
         }
         return null;
     }
-//        return UUID.randomUUID().toString().substring(0, 8);
-
 
 }

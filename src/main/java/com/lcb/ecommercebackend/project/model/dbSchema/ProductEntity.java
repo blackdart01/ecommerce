@@ -2,6 +2,7 @@ package com.lcb.ecommercebackend.project.model.dbSchema;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
@@ -17,12 +18,12 @@ public class ProductEntity {
     @Column(name = "id")
     private Integer id;
 
-    @NotNull
     @JsonProperty("product_id")
     @Column(name = "product_id", unique = true) // Mark product_id as unique
     private String productId;
 
     @NotNull
+    @NotBlank
     @JsonProperty("product_name")
     @Column(name = "product_name")
     private String productName;
@@ -32,20 +33,23 @@ public class ProductEntity {
     private String productDesc;
 
     @NotNull
+    @NotBlank
     @JsonProperty("price")
     @Column(name = "price")
     private String price; // Consider using a numeric type (e.g., BigDecimal) for currency
 
     @JsonProperty("category_id")
     @Column(name = "category_id")
-    private Integer categoryId;
+    private String categoryId;
 
     @NotNull
+    @NotBlank
     @JsonProperty("sku")
     @Column(name = "sku")
     private String sku;
 
     @NotNull
+    @NotBlank
     @JsonProperty("supplier_id")
     @Column(name = "supplier_id")
     private String supplierId;
@@ -55,14 +59,14 @@ public class ProductEntity {
     private String discountId; // Consider using a relationship with a Discount entity
 
     @NotNull
+    @NotBlank
     @JsonProperty("units_on_stock")
     @Column(name = "units_on_stock")
-    private Integer unitsOnStock; // Consider using an integer type for stock
+    private String unitsOnStock; // Consider using an integer type for stock
 
-    @NotNull
     @JsonProperty("units_on_order")
     @Column(name = "units_on_order")
-    private Integer unitsOnOrder; // Consider using an integer type for orders
+    private String unitsOnOrder; // Consider using an integer type for orders
 
     @NotNull
     @JsonProperty("is_active")
@@ -73,7 +77,6 @@ public class ProductEntity {
     @Column(name = "reviews_id")
     private String reviewsId; // Consider using a relationship with a Review entity
 
-    @NotNull
     @JsonProperty("created_at")
     @Column(name = "created_at", columnDefinition = "TIMESTAMP WITH TIME ZONE")
     private ZonedDateTime createdAt;
@@ -81,33 +84,4 @@ public class ProductEntity {
     @JsonProperty("modified_at")
     @Column(name = "modified_at", columnDefinition = "TIMESTAMP WITH TIME ZONE")
     private ZonedDateTime modifiedAt;
-
-//    public ProductEntity() {
-//    }
-
-//    public String getProductId() {
-//        return productId;
-//    }
-//
-//    public void setProductId(String productId) {
-//        this.productId = generateUniqueProductId();
-//    }
-
-//    public ProductEntity(String productName, String productDesc, String price, Long categoryId, String sku, String supplierId, String discountId, Integer unitsOnStock, Integer unitsOnOrder, Boolean isActive, String reviewsId, ZonedDateTime createdAt, ZonedDateTime modifiedAt) {
-//        this.productId = generateUniqueProductId();
-//        this.productName = productName;
-//        this.productDesc = productDesc;
-//        this.price = price;
-//        this.categoryId = categoryId;
-//        this.sku = sku;
-//        this.supplierId = supplierId;
-//        this.discountId = discountId;
-//        this.unitsOnStock = unitsOnStock;
-//        this.unitsOnOrder = unitsOnOrder;
-//        this.isActive = isActive;
-//        this.reviewsId = reviewsId;
-//        this.createdAt = createdAt;
-//        this.modifiedAt = modifiedAt;
-//    }
-
 }

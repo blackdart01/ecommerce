@@ -2,6 +2,7 @@ package com.lcb.ecommercebackend.project.model.dbSchema;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
@@ -18,11 +19,13 @@ public class DiscountEntity {
     private Integer id;
 
     @NotNull
+    @NotBlank
     @JsonProperty("product_id")
     @Column(name = "product_id")
     private String productId;
 
     @NotNull
+    @NotBlank
     @JsonProperty("discounted-price")
     @Column(name="discounted-price")
     private String discountedPrice;
@@ -36,7 +39,6 @@ public class DiscountEntity {
     @Column(name="is_active")
     private Boolean isActive;
 
-    @NotNull
     @JsonProperty("created_at")
     @Column(name="created_at", columnDefinition = "TIMESTAMP WITH TIME ZONE")
     private ZonedDateTime createdAt;

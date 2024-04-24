@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProductRepository extends JpaRepository<ProductEntity, Integer> {
     public ProductEntity findByProductId(String productId);
+    public ProductEntity findBySku(String sku);
 }
