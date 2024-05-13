@@ -14,15 +14,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/product")
-public class ProductController {
+@RequestMapping("/user")
+public class UserController {
 
     @Autowired
     private ProductService productService;
     @Autowired
     private CommonUtil commonUtil;
-//    @GetMapping({"getAllProducts", "getAllProducts/"})
-    @GetMapping({"getAllProducts"})
+    @GetMapping({"getAllProducts", "getAllProducts/"})
     public ResponseEntity<ResponseWrapper<?>> getAllProducts(){
         ResponseWrapper<?> responseWrapper = productService.getAllProducts();
         if(responseWrapper.getResult().getStatusCode()==HttpStatus.OK.value())
@@ -30,20 +29,13 @@ public class ProductController {
         return ResponseEntity.status(responseWrapper.result.getStatusCode()).body(responseWrapper);
     }
 
-//    @GetMapping({"getProductById/{productId}", "getProductById/", "getProductById"})
-    @GetMapping({"getProductById/{productId}"})
+    @GetMapping({"getProductById/{productId}", "getProductById/", "getProductById"})
     public ResponseEntity<ResponseWrapper<?>> getProductById(@PathVariable(required = false) String productId){
         ResponseWrapper<?> responseWrapper = productService.findByProductId(productId);
         return ResponseEntity.status(responseWrapper.result.getStatusCode()).body(responseWrapper);
     }
-//    @GetMapping({"getProductsBySupplier/{productId}", "getProductById/", "getProductById"})
-//    public ResponseEntity<ResponseWrapper<?>> getProductsBySupplier(@PathVariable(required = false) Integer productId){
-//        ResponseWrapper<?> responseWrapper = productService.getProductsBySupplier(productId);
-//        return ResponseEntity.status(responseWrapper.result.getStatusCode()).body(responseWrapper);
-//    }
 
-//    @PostMapping({"addProduct", "addProduct/"})
-    @PostMapping({"addProduct"})
+    @PostMapping({"addProduct", "addProduct/"})
     public ResponseEntity<ResponseWrapper<?>> addNewProduct(@Valid @RequestBody ProductEntity productRequest, BindingResult bindingResult){
         String errors = null;
         if(bindingResult.hasErrors()){
@@ -55,8 +47,7 @@ public class ProductController {
         return ResponseEntity.status(responseWrapper.getResult().getStatusCode()).body(responseWrapper);
     }
 
-//    @PutMapping({"updateProduct", "updateProduct/"})
-    @PutMapping({"updateProduct"})
+    @PutMapping({"updateProduct", "updateProduct/"})
     public ResponseEntity<ResponseWrapper<?>> updateExistingProduct(@Valid @RequestBody ProductEntity productRequest, BindingResult bindingResult){
         String errors = null;
         if(bindingResult.hasErrors()){
@@ -68,8 +59,7 @@ public class ProductController {
         return ResponseEntity.status(responseWrapper.getResult().getStatusCode()).body(responseWrapper);
     }
 
-//    @DeleteMapping({"deleteProduct/{productId}", "deleteProduct/", "deleteProduct"})
-    @DeleteMapping({"deleteProduct/{productId}"})
+    @DeleteMapping({"deleteProduct/{productId}", "deleteProduct/", "deleteProduct"})
     public ResponseEntity<ResponseWrapper<?>> deleteExistingProduct(@PathVariable(required = false) String productId){
         ResponseWrapper<?> responseWrapper = productService.deleteExistingProduct(productId);
         return ResponseEntity.status(responseWrapper.getResult().getStatusCode()).body(responseWrapper);

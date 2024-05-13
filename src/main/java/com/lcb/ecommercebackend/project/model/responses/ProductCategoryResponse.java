@@ -9,7 +9,7 @@ import java.time.ZonedDateTime;
 public class ProductCategoryResponse {
 
     @JsonProperty("categoryId")
-    private Long categoryId;
+    private Integer categoryId;
     @JsonProperty("categoryName")
     private String categoryName;
     @JsonProperty("categoryDescription")

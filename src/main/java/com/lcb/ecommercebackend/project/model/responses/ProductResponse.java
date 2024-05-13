@@ -9,7 +9,7 @@ import java.time.ZonedDateTime;
 public class ProductResponse {
 
     @JsonProperty("productId")
-    private Long productId;
+    private String productId;
     @JsonProperty("productName")
     private String productName;
     @JsonProperty("productDescription")
@@ -17,7 +17,7 @@ public class ProductResponse {
     @JsonProperty("price")
     private String price;
     @JsonProperty("categoryId")
-    private Long categoryId;
+    private Integer categoryId;
     @JsonProperty("sku")
     private String sku;
     @JsonProperty("createdAt")
