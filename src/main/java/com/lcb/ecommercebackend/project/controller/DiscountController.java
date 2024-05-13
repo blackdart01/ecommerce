@@ -25,7 +25,8 @@ public class DiscountController {
     @Autowired
     ServiceUtil serviceUtil;
 
-    @GetMapping({"getAllDiscounts", "getAllDiscounts/"})
+//    @GetMapping({"getAllDiscounts", "getAllDiscounts/"})
+    @GetMapping({"getAllDiscounts"})
     public ResponseEntity<ResponseWrapper<List<DiscountEntity>>> getAllDiscounts(){
         ResponseWrapper<List<DiscountEntity>> responseWrapper = discountService.getAllDiscounts();
         if(responseWrapper.getResult().getStatusCode()== HttpStatus.OK.value())
@@ -33,18 +34,21 @@ public class DiscountController {
         return ResponseEntity.status(responseWrapper.result.getStatusCode()).body(responseWrapper);
     }
 
-    @GetMapping({"getDiscountByDiscountId/{discountId}", "getDiscountByDiscountId/", "getDiscountByDiscountId"})
+//    @GetMapping({"getDiscountByDiscountId/{discountId}", "getDiscountByDiscountId/", "getDiscountByDiscountId"})
+    @GetMapping({"getDiscountByDiscountId/{discountId}"})
     public ResponseEntity<ResponseWrapper<?>> getDiscountByDiscountId(@PathVariable(required = false) String discountId){
         ResponseWrapper<?> responseWrapper = discountService.findByDiscountId(discountId);
         return ResponseEntity.status(responseWrapper.result.getStatusCode()).body(responseWrapper);
     }
-    @GetMapping({"getDiscountByProductId/{productId}", "getDiscountByProductId/", "getDiscountByProductId"})
+//    @GetMapping({"getDiscountByProductId/{productId}", "getDiscountByProductId/", "getDiscountByProductId"})
+    @GetMapping({"getDiscountByProductId/{productId}"})
     public ResponseEntity<ResponseWrapper<?>> getDiscountByProductId(@PathVariable(required = false) String productId){
         ResponseWrapper<?> responseWrapper = discountService.findByProductId(productId);
         return ResponseEntity.status(responseWrapper.result.getStatusCode()).body(responseWrapper);
     }
 
-    @PostMapping({"createDiscount", "createDiscount/"})
+//    @PostMapping({"createDiscount", "createDiscount/"})
+    @PostMapping({"createDiscount"})
     public ResponseEntity<ResponseWrapper<?>> createNewDiscount(@Valid @RequestBody DiscountEntity discountEntity, BindingResult bindingResult){
         String errors = null;
         if(bindingResult.hasErrors()){
@@ -57,7 +61,8 @@ public class DiscountController {
         return ResponseEntity.status(responseWrapper.getResult().getStatusCode()).body(responseWrapper);
     }
 
-    @PutMapping({"updateDiscount", "updateDiscount/"})
+//    @PutMapping({"updateDiscount", "updateDiscount/"})
+    @PutMapping({"updateDiscount"})
     public ResponseEntity<ResponseWrapper<?>> updateExistingDiscount(@Valid @RequestBody DiscountEntity discountEntity, BindingResult bindingResult){
         String errors = null;
         if(bindingResult.hasErrors()){
@@ -70,7 +75,8 @@ public class DiscountController {
         return ResponseEntity.status(responseWrapper.getResult().getStatusCode()).body(responseWrapper);
     }
 
-    @DeleteMapping({"deleteProduct/{discountId}", "deleteProduct/", "deleteProduct"})
+//    @DeleteMapping({"deleteProduct/{discountId}", "deleteProduct/", "deleteProduct"})
+    @DeleteMapping({"deleteProduct/{discountId}"})
     public ResponseEntity<ResponseWrapper<?>> deleteExistingDiscount(@PathVariable(required = false) String discountId){
         ResponseWrapper<?> responseWrapper = discountService.deleteExistingDiscount(discountId);
         return ResponseEntity.status(responseWrapper.getResult().getStatusCode()).body(responseWrapper);

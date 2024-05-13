@@ -84,4 +84,8 @@ public class ProductEntity {
     @JsonProperty("modified_at")
     @Column(name = "modified_at", columnDefinition = "TIMESTAMP WITH TIME ZONE")
     private ZonedDateTime modifiedAt;
+
+//    @ManyToOne(fetch = FetchType.LAZY) // ManyToOne relationship with Supplier
+//    @JoinColumn(name = "supplier_id") // Foreign key referencing supplier table
+//    private SupplierEntity supplier;
 }
