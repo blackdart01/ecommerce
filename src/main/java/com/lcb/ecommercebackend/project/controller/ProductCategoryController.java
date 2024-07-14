@@ -27,6 +27,7 @@ public class ProductCategoryController {
 
 //    @GetMapping({"getAllCategories", "getAllCategories/"})
     @GetMapping({"getAllCategories"})
+    @CrossOrigin
     public ResponseEntity<ResponseWrapper<List<ProductCategoryEntity>>> getAllCategories(){
         ResponseWrapper<List<ProductCategoryEntity>> responseWrapper = productCategoryService.getAllCategories();
         if(responseWrapper.getResult().getStatusCode()== HttpStatus.OK.value())
