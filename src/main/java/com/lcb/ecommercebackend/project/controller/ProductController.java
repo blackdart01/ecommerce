@@ -16,7 +16,8 @@ import java.util.stream.Collectors;
 @RestController
 @CrossOrigin
 @RequestMapping("/product")
-public class ProductController {
+public class
+ProductController {
 
     @Autowired
     private ProductService productService;
