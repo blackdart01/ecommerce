@@ -68,7 +68,7 @@ public class SupplierService {
                 return serviceUtil.buildConflictData(null, StatusCodeEnum.DATA_MISSING.getStatusCode(), errors);
             } else {
                 ResponseWrapper<List<SupplierEntity>> entityList = getAllSuppliers();
-                boolean isSupplierIdNotMatched = entityList.getData().stream().filter(entity -> supplierEntity.getUserName().equalsIgnoreCase(entity.getUserName())).findFirst().isEmpty();
+                boolean isSupplierIdNotMatched = entityList.getData().stream().filter(entity -> supplierEntity.getUserName().equalsIgnoreCase(entity.getUserName()) && supplierEntity.getContactEmail().equalsIgnoreCase(entity.getContactEmail()) && supplierEntity.getContactPhone().equalsIgnoreCase(entity.getContactPhone())).findFirst().isEmpty();
                 if (!isSupplierIdNotMatched)
                     return serviceUtil.buildConflictData(StatusCodeEnum.DUPLICATE, null, null);
                 return supplierTransaction.createNewSupplier(supplierEntity);

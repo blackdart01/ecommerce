@@ -36,7 +36,7 @@ private DataCreationIdGenerationRepository dataCreationIdGenerationRepository;
             jrnlNum = String.valueOf(generateUniqueJrnlId(dataCreationIdGenerationRepository.findAll()));
             dataCreationIdGenerationEntity.setJrnlNum(jrnlNum);
             dataCreationIdGenerationRepository.save(dataCreationIdGenerationEntity);
-            msg = ObjectUtils.isEmpty(identifier) || identifier.equalsIgnoreCase("null") ? msg : msg + " " + identifier;
+            msg = ObjectUtils.isEmpty(identifier) || identifier.equalsIgnoreCase("null") ? msg : identifier;
         } catch (Exception e){
             return buildConflictData(null, HttpStatus.INTERNAL_SERVER_ERROR.value(), e.getMessage());
         }
