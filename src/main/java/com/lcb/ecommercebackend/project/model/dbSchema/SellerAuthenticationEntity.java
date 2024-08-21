@@ -2,12 +2,9 @@ package com.lcb.ecommercebackend.project.model.dbSchema;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.time.ZonedDateTime;
-import java.util.List;
 
 @Data
 @Entity
@@ -26,6 +23,10 @@ public class SellerAuthenticationEntity {
     @JsonProperty("user_name")
     @Column(name = "user_name")
     private String userName;
+
+    @JsonProperty("password")
+    @Column(name = "password")
+    private String password;
 
     @JsonProperty("supplier_name")
     @Column(name = "supplier_name")
