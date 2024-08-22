@@ -55,10 +55,20 @@ public class SellerAuthenticationService {
             if (!ObjectUtils.isEmpty(errors)) {
                 return serviceUtil.buildConflictData(null, StatusCodeEnum.DATA_MISSING.getStatusCode(), errors);
             } else {
-                SellerAuthenticationEntity sellerAuthenticationEntity = sellerAuthenticationRepository.findBySupplierId(sellerAuthenticationData.getSupplierId());
-                SellerAuthenticationEntity sellerAuthenticationEntity1 = sellerAuthenticationRepository.findByContactEmail(sellerAuthenticationData.getContactEmail());
-                SellerAuthenticationEntity sellerAuthenticationEntity2 = sellerAuthenticationRepository.findByContactPhone(sellerAuthenticationData.getContactPhone());
-                boolean isSupplierIdNotMatched = ObjectUtils.isNotEmpty(sellerAuthenticationEntity) || ObjectUtils.isNotEmpty(sellerAuthenticationEntity1) || ObjectUtils.isNotEmpty(sellerAuthenticationEntity2);
+                boolean isSupplierIdNotMatched = false;
+                if(ObjectUtils.isNotEmpty(sellerAuthenticationData.getSupplierId())) {
+                    SellerAuthenticationEntity sellerAuthenticationEntity = sellerAuthenticationRepository.findBySupplierId(sellerAuthenticationData.getSupplierId());
+                    isSupplierIdNotMatched = isSupplierIdNotMatched && ObjectUtils.isNotEmpty(sellerAuthenticationEntity);
+                } else if(ObjectUtils.isNotEmpty(sellerAuthenticationData.getContactEmail())) {
+                    SellerAuthenticationEntity sellerAuthenticationEntity = sellerAuthenticationRepository.findByContactEmail(sellerAuthenticationData.getContactEmail());
+                    isSupplierIdNotMatched = isSupplierIdNotMatched && ObjectUtils.isNotEmpty(sellerAuthenticationEntity);
+                } else if(ObjectUtils.isNotEmpty(sellerAuthenticationData.getContactPhone())) {
+                    SellerAuthenticationEntity sellerAuthenticationEntity = sellerAuthenticationRepository.findByContactPhone(sellerAuthenticationData.getContactPhone());
+                    isSupplierIdNotMatched = isSupplierIdNotMatched && ObjectUtils.isNotEmpty(sellerAuthenticationEntity);
+                } else if(ObjectUtils.isNotEmpty(sellerAuthenticationData.getUserName())) {
+                    SellerAuthenticationEntity sellerAuthenticationEntity = sellerAuthenticationRepository.findByUserName(sellerAuthenticationData.getUserName());
+                    isSupplierIdNotMatched = isSupplierIdNotMatched && ObjectUtils.isNotEmpty(sellerAuthenticationEntity);
+                }
                 if (isSupplierIdNotMatched)
                     return serviceUtil.buildConflictData(StatusCodeEnum.DUPLICATE, null, null);
                 return sellerAuthenticationTransaction.createNewSeller(sellerAuthenticationData);
