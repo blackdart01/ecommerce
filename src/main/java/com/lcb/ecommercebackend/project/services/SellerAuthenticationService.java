@@ -33,12 +33,15 @@ public class SellerAuthenticationService {
                 SellerAuthenticationEntity sellerAuthenticationEntity = sellerAuthenticationRepository.findBySupplierId(parameter);
                 SellerAuthenticationEntity sellerAuthenticationEntity1 = sellerAuthenticationRepository.findByContactEmail(parameter);
                 SellerAuthenticationEntity sellerAuthenticationEntity2 = sellerAuthenticationRepository.findByContactPhone(parameter);
+                SellerAuthenticationEntity sellerAuthenticationEntity3 = sellerAuthenticationRepository.findByUserName(parameter);
                 if (ObjectUtils.isNotEmpty(sellerAuthenticationEntity))
                     return commonUtil.wrapToWrapperClass(sellerAuthenticationEntity, new ResultResponse(HttpStatus.OK));
                 else if (ObjectUtils.isNotEmpty(sellerAuthenticationEntity1))
                     return commonUtil.wrapToWrapperClass(sellerAuthenticationEntity1, new ResultResponse(HttpStatus.OK));
                 else if (ObjectUtils.isNotEmpty(sellerAuthenticationEntity2))
                     return commonUtil.wrapToWrapperClass(sellerAuthenticationEntity2, new ResultResponse(HttpStatus.OK));
+                else if (ObjectUtils.isNotEmpty(sellerAuthenticationEntity3))
+                    return commonUtil.wrapToWrapperClass(sellerAuthenticationEntity3, new ResultResponse(HttpStatus.OK));
                 else
                     return serviceUtil.buildConflictData(StatusCodeEnum.RECORD_NOT_FOUND, null, null);
             }
