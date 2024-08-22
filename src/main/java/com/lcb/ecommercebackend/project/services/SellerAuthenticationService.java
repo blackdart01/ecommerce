@@ -56,7 +56,7 @@ public class SellerAuthenticationService {
                 SellerAuthenticationEntity sellerAuthenticationEntity1 = sellerAuthenticationRepository.findByContactEmail(sellerAuthenticationData.getContactEmail());
                 SellerAuthenticationEntity sellerAuthenticationEntity2 = sellerAuthenticationRepository.findByContactPhone(sellerAuthenticationData.getContactPhone());
                 boolean isSupplierIdNotMatched = ObjectUtils.isNotEmpty(sellerAuthenticationEntity) || ObjectUtils.isNotEmpty(sellerAuthenticationEntity1) || ObjectUtils.isNotEmpty(sellerAuthenticationEntity2);
-                if (!isSupplierIdNotMatched)
+                if (isSupplierIdNotMatched)
                     return serviceUtil.buildConflictData(StatusCodeEnum.DUPLICATE, null, null);
                 return sellerAuthenticationTransaction.createNewSeller(sellerAuthenticationData);
             }
